@@ -35,6 +35,13 @@ let quotes = [
 ];
 
 /**
+ * Initialize `current_quote` variable to keep track of currently displayed quote index
+ * and avoid displaying the same quote twice in a row. Value set to -1 to indicate that
+ * no quote has been displayed yet.
+ */
+var current_quote = -1;
+
+/**
  * getRandomQuote
  * 
  * Creates a random number, and uses that random number to return a random quote
@@ -44,6 +51,15 @@ let quotes = [
 function getRandomQuote() {
   // Get a random number from 0 to the last index of the quotes array
   let i = Math.floor(Math.random() * quotes.length);
+
+  // Keep getting a random number until the number generated is diferent the the value in `current_quote` variable
+  while(i === current_quote) {
+    // Get a random number from 0 to the last index of the quotes array
+    i = Math.floor(Math.random() * quotes.length);
+  }
+
+  // Update `current_quote` variable to new quote index
+  current_quote = i;
 
   // Use random number as index to select quote
   let quote = quotes[i];
