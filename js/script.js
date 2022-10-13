@@ -52,6 +52,25 @@ function getRandomQuote() {
 }
 
 /**
+ * changeBackgroundColor
+ * 
+ * Changes the background color of the page
+ *
+ */
+function changeBackgroundColor() {  
+  /**
+   * Generate random color in hex format
+   * 
+   * Author: Akhil sai
+   * Source: https://dev.to/akhil_001/generating-random-color-with-single-line-of-js-code-fhj
+   */
+  var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+
+  // Change background color property of body
+  document.querySelector('body').style.backgroundColor = randomColor;
+}
+
+/**
  * printQuote
  * 
  * Displays a new quote to the page
@@ -84,6 +103,9 @@ function printQuote() {
 
   // Output quote to page
   document.getElementById('quote-box').innerHTML = html; 
+
+  // Change page background color
+  changeBackgroundColor();
 }
 
 /***
