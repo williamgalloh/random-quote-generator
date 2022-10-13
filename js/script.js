@@ -24,11 +24,13 @@ let quotes = [
   },
   {
     quote: "You only live once, but if you do it right, once is enough",
-    source: "Mae West"
+    source: "Mae West",
+    tags: ["Popular", "Science"]
   },
   {
     quote: "Whether you think you can or you think you can’t, you’re right",
-    source: "Henry Ford"
+    source: "Henry Ford",
+    tags: ["Automotive"]
   }
 ];
 
@@ -74,6 +76,11 @@ function printQuote() {
   }
 
   html += `</p>`;
+
+  // Check if there is a tags property
+  if(Object.keys(quote).indexOf('tags') > -1) {
+    html += `<p class="tags">Tags: ${quote.tags.join(", ")}</p>`;
+  }
 
   // Output quote to page
   document.getElementById('quote-box').innerHTML = html; 
