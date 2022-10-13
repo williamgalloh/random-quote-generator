@@ -92,7 +92,17 @@ function changeBackgroundColor() {
  * Displays a new quote to the page
  *
  */
-function printQuote() {
+function printQuote(e) {
+  /**
+   * Check if function is called from button click, if so, clear old interval and create a new one.
+   * This should reset the interval and prevent the old interval from changing the quote too quickly
+   * after pressing the 'show another quote' button
+   */
+  if (e !== undefined && e.target.getAttribute('id') == "load-quote") {
+    clearInterval(interval);
+    interval = setInterval(printQuote, 10000);
+  }
+
   // Get random quote
   let quote = getRandomQuote();
 
@@ -123,6 +133,9 @@ function printQuote() {
   // Change page background color
   changeBackgroundColor();
 }
+
+// Print a new quote to the page at 10 second intervals
+let interval = setInterval(printQuote, 10000);
 
 /***
  * click event listener for the print quote button
